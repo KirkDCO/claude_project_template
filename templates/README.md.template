@@ -1,0 +1,88 @@
+# [PROJECT_NAME]
+
+[REPLACE: Brief description of what this project does]
+
+## 🚀 Quick Start
+
+### Installation
+```bash
+# [REPLACE: Installation instructions]
+```
+
+### Basic Usage
+```bash
+# [REPLACE: Basic usage examples]
+```
+
+## 📁 Project Structure
+
+This project follows the [Claude Code guidelines](CODING_GUIDELINES.md) with utils-first architecture:
+
+```
+[PROJECT_NAME]/
+├── utils/              # ⭐ Centralized utilities (single source of truth)
+├── [main_modules]/     # Feature-specific modules
+├── tests/              # Test files
+├── docs/              # Documentation
+└── scripts/           # Development and deployment scripts
+```
+
+## 🛠️ Development
+
+### Prerequisites
+- [REPLACE: List prerequisites]
+
+### Setup
+```bash
+# [REPLACE: Development setup instructions]
+```
+
+### Testing
+```bash
+# [REPLACE: How to run tests]
+```
+
+### Code Quality
+```bash
+# Check for duplicate implementations and architecture violations
+./scripts/dry_audit.sh
+
+# [REPLACE: Other quality tools]
+```
+
+## 📋 Architecture Guidelines
+
+This project follows strict DRY principles and utils-first development:
+
+- **All reusable functionality lives in `utils/`**
+- **No duplicate implementations allowed**
+- **Performance optimized with sampling for large datasets**
+- **Search existing code before implementing new features**
+
+See [CODING_GUIDELINES.md](CODING_GUIDELINES.md) for complete details.
+
+## 🤝 Contributing
+
+1. Read [CODING_GUIDELINES.md](CODING_GUIDELINES.md) and [DEVELOPER_GUIDELINES.md](DEVELOPER_GUIDELINES.md)
+2. Run `./scripts/dry_audit.sh` to check current state
+3. Follow utils-first development patterns
+4. Ensure all changes follow DRY principles
+5. Add tests for new functionality
+
+## 📚 Documentation
+
+- [Coding Guidelines](CODING_GUIDELINES.md) - Architecture principles and standards
+- [Developer Guidelines](DEVELOPER_GUIDELINES.md) - Personal workflow and AI collaboration
+- [Changelog](CHANGELOG.md) - Project history and breaking changes
+
+## 🐛 Known Issues
+
+[REPLACE: List any known limitations or issues]
+
+## 🔮 Future Plans
+
+[REPLACE: Planned features and improvements]
+
+## 📄 License
+
+[REPLACE: License information]

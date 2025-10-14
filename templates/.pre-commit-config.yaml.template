@@ -1,0 +1,21 @@
+# Pre-commit hooks template for DRY compliance and code quality
+# This file is used by new_project_setup.sh to create .pre-commit-config.yaml
+
+repos:
+  - repo: local
+    hooks:
+      - id: dry-audit
+        name: DRY Compliance Audit
+        entry: scripts/dry_audit.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+
+      - id: coding-guidelines-check
+        name: Check CODING_GUIDELINES.md exists
+        entry: sh -c 'test -f CODING_GUIDELINES.md || (echo "❌ CODING_GUIDELINES.md missing!" && exit 1)'
+        language: system
+        pass_filenames: false
+        always_run: true
+
+# Language-specific hooks are added by the setup script based on project type
