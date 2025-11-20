@@ -143,6 +143,20 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
 fi
 
+# Create specifications/ directory if it doesn't exist
+echo ""
+read -p "Create specifications/ directory for project specifications? (y/N) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [ ! -d "specifications" ]; then
+        mkdir -p specifications
+        echo "   ✅ Created specifications/ directory"
+        echo "   💡 See specifications/PROJECT_SPECIFICATIONS.md in template repo for examples"
+    else
+        echo "   ✅ specifications/ directory already exists"
+    fi
+fi
+
 # Summary
 echo ""
 echo "✅ Installation Complete!"
@@ -159,10 +173,12 @@ fi
 echo ""
 echo "📋 Next steps:"
 echo "1. Edit CLAUDE.md to add project-specific context"
-echo "2. Run ./scripts/dry_audit.sh to check current state"
-echo "3. Review CODING_GUIDELINES.md and DEVELOPER_GUIDELINES.md"
-echo "4. Set up the session startup alias:"
+echo "2. Add project specifications to specifications/ directory"
+echo "   (See specifications/PROJECT_SPECIFICATIONS.md in template repo for examples)"
+echo "3. Run ./scripts/dry_audit.sh to check current state"
+echo "4. Review CODING_GUIDELINES.md and DEVELOPER_GUIDELINES.md"
+echo "5. Set up the session startup alias:"
 echo "   echo 'alias cstart=\"claude \\\"Review SESSION_STARTUP.md and follow the instructions.\\\"\"' >> ~/.bashrc"
-echo "5. Start a Claude Code session with: cstart"
+echo "6. Start a Claude Code session with: cstart"
 echo ""
 echo "🚀 Ready to use Claude Code with enforced guidelines!"

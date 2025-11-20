@@ -47,25 +47,28 @@ cd /path/to/your/project
 
 ```
 claude_project_template/
-├── README.md                    # This file - usage instructions
-├── CHANGELOG.md                 # Template repository changes
-├── LICENSE                      # Template license
+├── README.md                        # This file - usage instructions
+├── CHANGELOG.md                     # Template repository changes
+├── LICENSE                          # Template license
 │
-├── guidelines/                  # Core files copied to every project
-│   ├── CODING_GUIDELINES.md        # Universal architecture principles
-│   ├── DEVELOPER_GUIDELINES.md     # Human workflow patterns
-│   └── SESSION_STARTUP.md          # AI session startup protocol
+├── guidelines/                      # Core files copied to every project
+│   ├── CODING_GUIDELINES.md            # Universal architecture principles
+│   ├── DEVELOPER_GUIDELINES.md         # Human workflow patterns
+│   └── SESSION_STARTUP.md              # AI session startup protocol
 │
-├── templates/                   # Customizable templates
-│   ├── CLAUDE.md.template          # Project context template
-│   ├── README.md.template          # Project README template
-│   ├── CHANGELOG.md.template       # Project changelog template
+├── templates/                       # Customizable templates
+│   ├── CLAUDE.md.template              # Project context template
+│   ├── README.md.template              # Project README template
+│   ├── CHANGELOG.md.template           # Project changelog template
 │   └── .pre-commit-config.yaml.template
 │
-└── scripts/                     # Template management scripts
-    ├── dry_audit.sh                # DRY compliance checker (copied to projects)
-    ├── new_project.sh              # Create new project from template
-    └── install_guidelines.sh       # Add guidelines to existing project
+├── specifications/                  # Example specifications (not copied to projects)
+│   └── PROJECT_SPECIFICATIONS.md       # Comprehensive examples and documentation
+│
+└── scripts/                         # Template management scripts
+    ├── dry_audit.sh                    # DRY compliance checker (copied to projects)
+    ├── new_project.sh                  # Create new project from template
+    └── install_guidelines.sh           # Add guidelines to existing project
 ```
 
 ## **📦 What Gets Installed in Your Project**
@@ -87,10 +90,59 @@ When you create a new project or add guidelines to an existing one:
 - **`.gitignore`** - Common ignore patterns (created or updated)
 
 ### **Project Structures (based on type):**
-- **Python**: `utils/`, `<project_name>/`, `tests/`, `docs/`, `scripts/`
-- **Web**: `src/utils/`, `src/components/`, `src/services/`, `tests/`, `docs/`, `scripts/`
-- **Data Science**: `utils/`, `data/`, `notebooks/`, `models/`, `tests/`, `docs/`, `scripts/`
-- **CLI Tools**: `utils/`, `cli/`, `commands/`, `config/`, `tests/`, `docs/`, `scripts/`
+- **Python**: `utils/`, `<project_name>/`, `tests/`, `docs/`, `scripts/`, `specifications/`
+- **Web**: `src/utils/`, `src/components/`, `src/services/`, `tests/`, `docs/`, `scripts/`, `specifications/`
+- **Data Science**: `utils/`, `data/`, `notebooks/`, `models/`, `tests/`, `docs/`, `scripts/`, `specifications/`
+- **CLI Tools**: `utils/`, `cli/`, `commands/`, `config/`, `tests/`, `docs/`, `scripts/`, `specifications/`
+
+**Note**: All projects include a `specifications/` directory for documenting requirements, architecture, and technical constraints.
+
+## **📝 Project Specifications**
+
+### **Why Document Specifications?**
+
+Clear specifications are crucial when working with AI assistants like Claude Code:
+- **Maintain consistency** across development sessions
+- **Onboard AI quickly** with complete project context
+- **Prevent scope creep** by documenting requirements clearly
+- **Enable better decisions** by having requirements readily accessible
+
+### **The `specifications/` Directory**
+
+Every project created with this template includes a `specifications/` directory where you can place:
+
+- **REQUIREMENTS.md** - Functional and non-functional requirements
+- **ARCHITECTURE.md** - System architecture and design decisions
+- **API_SPECIFICATION.md** - API endpoints, contracts, schemas
+- **DATA_MODELS.md** - Database schemas, data structures
+- **USER_STORIES.md** - User stories and acceptance criteria
+- **TECHNICAL_CONSTRAINTS.md** - Performance, security, compliance requirements
+
+### **Example Specification Document**
+
+See **`specifications/PROJECT_SPECIFICATIONS.md`** in this template repository for comprehensive examples of:
+- How to structure specification documents
+- What to include in each type of specification
+- Best practices for specifications with AI collaboration
+- Integration with CLAUDE.md and SESSION_STARTUP.md
+
+**Note**: `specifications/PROJECT_SPECIFICATIONS.md` is NOT copied to new projects - it serves as documentation and guidance.
+
+### **Using Specifications with Claude Code**
+
+Reference specifications in your prompts:
+```
+"Implement the user registration endpoint following the API specification
+in specifications/API_SPECIFICATION.md and ensure it meets requirements
+FR-1 in specifications/REQUIREMENTS.md."
+```
+
+Update your `CLAUDE.md` to reference specifications:
+```markdown
+## Project Specifications
+All requirements are documented in the `specifications/` directory.
+Always review relevant specs before implementing features.
+```
 
 ## **✅ Benefits**
 
