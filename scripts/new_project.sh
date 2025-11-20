@@ -105,8 +105,8 @@ repos:
         always_run: true
 
       - id: coding-guidelines-check
-        name: Check CODING_GUIDELINES.md exists
-        entry: sh -c 'test -f CODING_GUIDELINES.md || (echo "❌ CODING_GUIDELINES.md missing!" && exit 1)'
+        name: Check guidelines/CODING_GUIDELINES.md exists
+        entry: sh -c 'test -f guidelines/CODING_GUIDELINES.md || (echo "❌ guidelines/CODING_GUIDELINES.md missing!" && exit 1)'
         language: system
         pass_filenames: false
         always_run: true

@@ -219,7 +219,7 @@ Always review relevant specs before implementing features.
 **Option 1 - Recommended Alias:**
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-alias cstart='claude "Review SESSION_STARTUP.md and follow the instructions."'
+alias cstart='claude "Review guidelines/SESSION_STARTUP.md and follow the instructions."'
 
 # Then start sessions with:
 cstart
@@ -227,12 +227,12 @@ cstart
 
 **Option 2 - Manual Command:**
 ```bash
-claude "Review SESSION_STARTUP.md and follow the instructions."
+claude "Review guidelines/SESSION_STARTUP.md and follow the instructions."
 ```
 
 ### **Human Developer Workflow:**
 1. Use `cstart` alias (or manual command) to start every Claude session
-2. Review `DEVELOPER_GUIDELINES.md` session startup ritual periodically
+2. Review `guidelines/DEVELOPER_GUIDELINES.md` session startup ritual periodically
 3. Run `./scripts/dry_audit.sh` to check current state before major work
 4. Follow quality control habits after changes
 5. Use effective AI collaboration patterns from guidelines
@@ -249,10 +249,10 @@ You know it's working when:
 ## **📚 Advanced Usage**
 
 ### **Customizing for Your Team:**
-1. Add team-specific patterns to `CODING_GUIDELINES.md`
-2. Update `CLAUDE.md.template` with your common project patterns
-3. Enhance `dry_audit.sh` with domain-specific checks
-4. Add team conventions to `DEVELOPER_GUIDELINES.md`
+1. Add team-specific patterns to `guidelines/CODING_GUIDELINES.md`
+2. Update `templates/CLAUDE.md.template` with your common project patterns
+3. Enhance `scripts/dry_audit.sh` with domain-specific checks
+4. Add team conventions to `guidelines/DEVELOPER_GUIDELINES.md`
 
 ### **Multi-Project Consistency:**
 - Use the same template across all projects

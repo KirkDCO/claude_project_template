@@ -5,10 +5,20 @@
 echo "🔍 DRY COMPLIANCE AUDIT"
 echo "======================"
 
-# Check if CODING_GUIDELINES.md exists
-if [ ! -f "CODING_GUIDELINES.md" ]; then
-    echo "❌ CODING_GUIDELINES.md not found. Create it first!"
-    exit 1
+# Check if CODING_GUIDELINES.md exists (in root or guidelines/)
+if [ -f "CODING_GUIDELINES.md" ]; then
+    GUIDELINES_PATH="CODING_GUIDELINES.md"
+elif [ -f "guidelines/CODING_GUIDELINES.md" ]; then
+    GUIDELINES_PATH="guidelines/CODING_GUIDELINES.md"
+else
+    echo "❌ CODING_GUIDELINES.md not found in project root or guidelines/ directory."
+    echo "   💡 This is a template project. Copy guidelines to project root when ready, or create custom guidelines."
+    echo "   Running audit anyway for informational purposes..."
+    GUIDELINES_PATH=""
+fi
+
+if [ -n "$GUIDELINES_PATH" ]; then
+    echo "📋 Using guidelines: $GUIDELINES_PATH"
 fi
 
 # 1. Find duplicate function names
@@ -76,18 +86,25 @@ fi
 echo ""
 echo "5️⃣ Checking utils/ module exports..."
 echo "------------------------------------"
-if [ -f "image_collage/utils/__init__.py" ]; then
-    utils_functions=$(grep -r "^def " image_collage/utils/ --include="*.py" | grep -v __init__ | wc -l)
-    exported_functions=$(grep -c "'" image_collage/utils/__init__.py)
 
-    if [ $utils_functions -ne $exported_functions ]; then
+# Find utils/__init__.py in the project (flexible path)
+UTILS_INIT=$(find . -path "*/utils/__init__.py" -not -path "*/\.*" -not -path "*/venv/*" -not -path "*/node_modules/*" 2>/dev/null | head -n 1)
+
+if [ -n "$UTILS_INIT" ]; then
+    UTILS_DIR=$(dirname "$UTILS_INIT")
+    utils_functions=$(grep -r "^def " "$UTILS_DIR/" --include="*.py" | grep -v __init__ | wc -l)
+    exported_functions=$(grep -c "'" "$UTILS_INIT" 2>/dev/null || echo 0)
+
+    if [ $utils_functions -gt 0 ] && [ $utils_functions -ne $exported_functions ]; then
         echo "⚠️  Mismatch between utils/ functions ($utils_functions) and exports ($exported_functions)"
-        echo "   💡 Update utils/__init__.py exports."
+        echo "   💡 Update $UTILS_INIT exports."
+    elif [ $utils_functions -gt 0 ]; then
+        echo "✅ Utils/ exports are up to date ($utils_functions functions)."
     else
-        echo "✅ Utils/ exports are up to date."
+        echo "ℹ️  No utils/ functions found yet (new project)."
     fi
 else
-    echo "⚠️  utils/__init__.py not found."
+    echo "ℹ️  utils/__init__.py not found (may be a new project without utils/ yet)."
 fi
 
 # 6. Performance check

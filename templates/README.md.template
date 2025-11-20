@@ -16,7 +16,7 @@
 
 ## 📁 Project Structure
 
-This project follows the [Claude Code guidelines](CODING_GUIDELINES.md) with utils-first architecture:
+This project follows the [Claude Code guidelines](guidelines/CODING_GUIDELINES.md) with utils-first architecture:
 
 ```
 [PROJECT_NAME]/
@@ -59,11 +59,11 @@ This project follows strict DRY principles and utils-first development:
 - **Performance optimized with sampling for large datasets**
 - **Search existing code before implementing new features**
 
-See [CODING_GUIDELINES.md](CODING_GUIDELINES.md) for complete details.
+See [CODING_GUIDELINES.md](guidelines/CODING_GUIDELINES.md) for complete details.
 
 ## 🤝 Contributing
 
-1. Read [CODING_GUIDELINES.md](CODING_GUIDELINES.md) and [DEVELOPER_GUIDELINES.md](DEVELOPER_GUIDELINES.md)
+1. Read [CODING_GUIDELINES.md](guidelines/CODING_GUIDELINES.md) and [DEVELOPER_GUIDELINES.md](guidelines/DEVELOPER_GUIDELINES.md)
 2. Run `./scripts/dry_audit.sh` to check current state
 3. Follow utils-first development patterns
 4. Ensure all changes follow DRY principles
@@ -71,8 +71,8 @@ See [CODING_GUIDELINES.md](CODING_GUIDELINES.md) for complete details.
 
 ## 📚 Documentation
 
-- [Coding Guidelines](CODING_GUIDELINES.md) - Architecture principles and standards
-- [Developer Guidelines](DEVELOPER_GUIDELINES.md) - Personal workflow and AI collaboration
+- [Coding Guidelines](guidelines/CODING_GUIDELINES.md) - Architecture principles and standards
+- [Developer Guidelines](guidelines/DEVELOPER_GUIDELINES.md) - Personal workflow and AI collaboration
 - [Changelog](CHANGELOG.md) - Project history and breaking changes
 
 ## 🐛 Known Issues
