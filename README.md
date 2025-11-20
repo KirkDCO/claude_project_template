@@ -75,10 +75,10 @@ claude_project_template/
 
 When you create a new project or add guidelines to an existing one:
 
-### **Core Guidelines (copied from `guidelines/`):**
-- **`CODING_GUIDELINES.md`** - Universal architecture principles (DRY, performance, security)
-- **`DEVELOPER_GUIDELINES.md`** - Human workflow and AI collaboration patterns
-- **`SESSION_STARTUP.md`** - Session startup protocol for AI assistants
+### **Core Guidelines (copied to `guidelines/` in your project):**
+- **`guidelines/CODING_GUIDELINES.md`** - Universal architecture principles (DRY, performance, security)
+- **`guidelines/DEVELOPER_GUIDELINES.md`** - Human workflow and AI collaboration patterns
+- **`guidelines/SESSION_STARTUP.md`** - Session startup protocol for AI assistants
 
 ### **Generated from Templates:**
 - **`CLAUDE.md`** - Project-specific context (from template, customized with project name)
@@ -90,12 +90,58 @@ When you create a new project or add guidelines to an existing one:
 - **`.gitignore`** - Common ignore patterns (created or updated)
 
 ### **Project Structures (based on type):**
-- **Python**: `utils/`, `<project_name>/`, `tests/`, `docs/`, `scripts/`, `specifications/`
-- **Web**: `src/utils/`, `src/components/`, `src/services/`, `tests/`, `docs/`, `scripts/`, `specifications/`
-- **Data Science**: `utils/`, `data/`, `notebooks/`, `models/`, `tests/`, `docs/`, `scripts/`, `specifications/`
-- **CLI Tools**: `utils/`, `cli/`, `commands/`, `config/`, `tests/`, `docs/`, `scripts/`, `specifications/`
 
-**Note**: All projects include a `specifications/` directory for documenting requirements, architecture, and technical constraints.
+**Python**:
+```
+project-name/
+├── guidelines/
+├── <project_name>/    # Python package
+│   ├── utils/         # Reusable utilities (inside package)
+│   ├── core/
+│   ├── config/
+│   └── cli/
+├── tests/             # Test files (separate from package)
+├── docs/              # Documentation (separate from package)
+├── scripts/
+└── specifications/
+```
+
+**Web**: `guidelines/`, `src/utils/`, `src/components/`, `src/services/`, `tests/`, `docs/`, `scripts/`, `specifications/`
+
+**Data Science**:
+```
+project-name/
+├── guidelines/
+├── <project_name>/    # Python package
+│   ├── utils/         # Reusable utilities (inside package)
+│   └── analysis/
+├── data/              # Data files (separate from package)
+├── notebooks/         # Jupyter notebooks (separate from package)
+├── models/            # Model files (separate from package)
+├── tests/
+├── docs/
+├── scripts/
+└── specifications/
+```
+
+**CLI Tools**:
+```
+project-name/
+├── guidelines/
+├── <project_name>/    # Python package
+│   ├── utils/         # Reusable utilities (inside package)
+│   ├── cli/
+│   ├── commands/
+│   └── config/
+├── tests/
+├── docs/
+├── scripts/
+└── specifications/
+```
+
+**Note**: All projects include:
+- `guidelines/` directory containing coding standards and development workflows
+- `specifications/` directory for documenting requirements, architecture, and technical constraints
 
 ## **📝 Project Specifications**
 

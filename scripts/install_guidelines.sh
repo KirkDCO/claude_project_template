@@ -37,12 +37,13 @@ fi
 # Copy core guidelines
 echo ""
 echo "📋 Copying core guidelines..."
-cp "$GUIDELINES_DIR/CODING_GUIDELINES.md" .
-cp "$GUIDELINES_DIR/DEVELOPER_GUIDELINES.md" .
-cp "$GUIDELINES_DIR/SESSION_STARTUP.md" .
-echo "   ✅ CODING_GUIDELINES.md"
-echo "   ✅ DEVELOPER_GUIDELINES.md"
-echo "   ✅ SESSION_STARTUP.md"
+mkdir -p guidelines
+cp "$GUIDELINES_DIR/CODING_GUIDELINES.md" guidelines/
+cp "$GUIDELINES_DIR/DEVELOPER_GUIDELINES.md" guidelines/
+cp "$GUIDELINES_DIR/SESSION_STARTUP.md" guidelines/
+echo "   ✅ guidelines/CODING_GUIDELINES.md"
+echo "   ✅ guidelines/DEVELOPER_GUIDELINES.md"
+echo "   ✅ guidelines/SESSION_STARTUP.md"
 
 # Create CLAUDE.md from template if it doesn't exist
 if [ ! -f "CLAUDE.md" ]; then
@@ -163,9 +164,7 @@ echo "✅ Installation Complete!"
 echo "========================"
 echo ""
 echo "📋 Files installed:"
-echo "   • CODING_GUIDELINES.md"
-echo "   • DEVELOPER_GUIDELINES.md"
-echo "   • SESSION_STARTUP.md"
+echo "   • guidelines/ (CODING_GUIDELINES.md, DEVELOPER_GUIDELINES.md, SESSION_STARTUP.md)"
 echo "   • scripts/dry_audit.sh"
 if [ -f "CLAUDE.md" ]; then
     echo "   • CLAUDE.md"
@@ -176,9 +175,9 @@ echo "1. Edit CLAUDE.md to add project-specific context"
 echo "2. Add project specifications to specifications/ directory"
 echo "   (See specifications/PROJECT_SPECIFICATIONS.md in template repo for examples)"
 echo "3. Run ./scripts/dry_audit.sh to check current state"
-echo "4. Review CODING_GUIDELINES.md and DEVELOPER_GUIDELINES.md"
+echo "4. Review guidelines/CODING_GUIDELINES.md and guidelines/DEVELOPER_GUIDELINES.md"
 echo "5. Set up the session startup alias:"
-echo "   echo 'alias cstart=\"claude \\\"Review SESSION_STARTUP.md and follow the instructions.\\\"\"' >> ~/.bashrc"
+echo "   echo 'alias cstart=\"claude \\\"Review guidelines/SESSION_STARTUP.md and follow the instructions.\\\"\"' >> ~/.bashrc"
 echo "6. Start a Claude Code session with: cstart"
 echo ""
 echo "🚀 Ready to use Claude Code with enforced guidelines!"

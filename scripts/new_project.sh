@@ -25,9 +25,10 @@ cd "$PROJECT_NAME"
 
 # Copy universal guidelines
 echo "📋 Copying coding guidelines..."
-cp "$GUIDELINES_DIR/CODING_GUIDELINES.md" .
-cp "$GUIDELINES_DIR/DEVELOPER_GUIDELINES.md" .
-cp "$GUIDELINES_DIR/SESSION_STARTUP.md" .
+mkdir -p guidelines
+cp "$GUIDELINES_DIR/CODING_GUIDELINES.md" guidelines/
+cp "$GUIDELINES_DIR/DEVELOPER_GUIDELINES.md" guidelines/
+cp "$GUIDELINES_DIR/SESSION_STARTUP.md" guidelines/
 
 # Create CLAUDE.md from template
 echo "📝 Creating CLAUDE.md..."
@@ -37,10 +38,10 @@ sed "s/\[PROJECT_NAME\]/$PROJECT_NAME/g; s|/path/to/your/project|$(pwd)|g" "$TEM
 echo "🏗️ Creating project structure..."
 case $PROJECT_TYPE in
     python)
-        mkdir -p utils tests docs scripts specifications
-        mkdir -p "$PROJECT_NAME"/{core,config,cli}
-        touch utils/__init__.py
+        mkdir -p tests docs scripts specifications
+        mkdir -p "$PROJECT_NAME"/{utils,core,config,cli}
         touch "$PROJECT_NAME"/__init__.py
+        touch "$PROJECT_NAME/utils/__init__.py"
         echo "# $PROJECT_NAME" > README.md
         ;;
     web)
@@ -49,19 +50,25 @@ case $PROJECT_TYPE in
         echo "# $PROJECT_NAME" > README.md
         ;;
     data_science)
-        mkdir -p utils data notebooks models tests docs scripts specifications
-        touch utils/__init__.py
+        mkdir -p data notebooks models tests docs scripts specifications
+        mkdir -p "$PROJECT_NAME"/{utils,analysis}
+        touch "$PROJECT_NAME"/__init__.py
+        touch "$PROJECT_NAME/utils/__init__.py"
         echo "# $PROJECT_NAME" > README.md
         ;;
     cli_tool)
-        mkdir -p utils cli commands config tests docs scripts specifications
-        touch utils/__init__.py
+        mkdir -p tests docs scripts specifications
+        mkdir -p "$PROJECT_NAME"/{utils,cli,commands,config}
+        touch "$PROJECT_NAME"/__init__.py
+        touch "$PROJECT_NAME/utils/__init__.py"
         echo "# $PROJECT_NAME" > README.md
         ;;
     *)
         echo "⚠️ Unknown project type, creating basic structure"
-        mkdir -p utils tests docs scripts specifications
-        touch utils/__init__.py
+        mkdir -p tests docs scripts specifications
+        mkdir -p "$PROJECT_NAME"/utils
+        touch "$PROJECT_NAME"/__init__.py
+        touch "$PROJECT_NAME/utils/__init__.py"
         echo "# $PROJECT_NAME" > README.md
         ;;
 esac
@@ -149,11 +156,11 @@ echo "1. cd $PROJECT_NAME"
 echo "2. Edit CLAUDE.md to add project-specific details"
 echo "3. Add project specifications to specifications/ directory"
 echo "   (See specifications/PROJECT_SPECIFICATIONS.md in template repo for examples)"
-echo "4. Review CODING_GUIDELINES.md and DEVELOPER_GUIDELINES.md"
+echo "4. Review guidelines/CODING_GUIDELINES.md and guidelines/DEVELOPER_GUIDELINES.md"
 echo "5. Set up the session startup alias:"
-echo "   echo \"alias cstart='claude \\\"Review SESSION_STARTUP.md and follow the instructions.\\\"'\" >> ~/.bashrc"
+echo "   echo \"alias cstart='claude \\\"Review guidelines/SESSION_STARTUP.md and follow the instructions.\\\"'\" >> ~/.bashrc"
 echo "6. Run ./scripts/dry_audit.sh to verify setup"
 echo "7. Start developing with utils-first approach!"
 echo ""
 echo "🚀 To start a Claude Code session: use 'cstart' alias or:"
-echo "   claude \"Review SESSION_STARTUP.md and follow the instructions.\""
+echo "   claude \"Review guidelines/SESSION_STARTUP.md and follow the instructions.\""

@@ -1,26 +1,26 @@
 # Claude Code Project Context
 
 ## 🚨 MANDATORY: Development Guidelines
-**CRITICAL**: Before making ANY code changes, read and follow `CODING_GUIDELINES.md`
+**CRITICAL**: Before making ANY code changes, read and follow `guidelines/CODING_GUIDELINES.md`
 
 ### 🤖 AI Assistant Session Startup:
-**Use session startup protocol** - Create a SESSION_STARTUP.md file or alias for consistent guidelines enforcement
+**Use session startup protocol** - Use the SESSION_STARTUP.md file with an alias for consistent guidelines enforcement
 
 **Recommended alias for ~/.bashrc or ~/.zshrc:**
 ```bash
-alias cstart='claude "Review SESSION_STARTUP.md and follow the instructions."'
+alias cstart='claude "Review guidelines/SESSION_STARTUP.md and follow the instructions."'
 ```
 
 ### 👤 Human Developer Resources:
-- **`DEVELOPER_GUIDELINES.md`** - Personal workflow and collaboration patterns
-- **`CODING_GUIDELINES.md`** - Universal architecture principles
-- **`SESSION_STARTUP.md`** - Session startup protocol template (recommended)
-- **`./scripts/dry_audit.sh`** - Automated compliance checking (if applicable)
+- **`guidelines/DEVELOPER_GUIDELINES.md`** - Personal workflow and collaboration patterns
+- **`guidelines/CODING_GUIDELINES.md`** - Universal architecture principles
+- **`guidelines/SESSION_STARTUP.md`** - Session startup protocol template
+- **`./scripts/dry_audit.sh`** - Automated compliance checking
 
 ### 🔍 Helpful Reminders:
 If the human seems to be:
-- Making requests without mentioning guidelines → Gently remind about CODING_GUIDELINES.md
-- Rushing through features → Suggest reviewing DEVELOPER_GUIDELINES.md session startup ritual
+- Making requests without mentioning guidelines → Gently remind about guidelines/CODING_GUIDELINES.md
+- Rushing through features → Suggest reviewing guidelines/DEVELOPER_GUIDELINES.md session startup ritual
 - Accepting quick/messy solutions → Reference the "Quality Control Habits" section
 - Asking for duplicated functionality → Run grep search and suggest utils/ consolidation
 - Working across multiple sessions → Ask if they need a quick architecture review
@@ -30,22 +30,28 @@ If the human seems to be:
 
 ## Project Structure
 ```
-[PROJECT_NAME]/
-├── utils/              # ⭐ CENTRALIZED UTILITIES (utils-first development)
-│   ├── [domain]_utils.py  # Core utility functions
-│   └── __init__.py       # Exports all utilities
-├── [core_module]/        # [REPLACE: Main business logic]
-├── [feature_modules]/    # [REPLACE: Feature-specific modules]
-├── config/              # Configuration management
-├── tests/               # Test files
-└── docs/                # Documentation
+[PROJECT_NAME]/                 # Project root
+├── guidelines/                 # Development guidelines
+├── [PROJECT_NAME]/             # Main Python package
+│   ├── utils/                  # ⭐ CENTRALIZED UTILITIES (utils-first development)
+│   │   ├── [domain]_utils.py  # Core utility functions
+│   │   └── __init__.py        # Exports all utilities
+│   ├── [core_module]/         # [REPLACE: Main business logic]
+│   ├── [feature_modules]/     # [REPLACE: Feature-specific modules]
+│   ├── config/                # Configuration management
+│   └── __init__.py
+├── tests/                      # Test files (separate from package)
+├── docs/                       # Documentation (separate from package)
+├── scripts/                    # Utility scripts
+└── specifications/             # Project specifications
 ```
 
 ### 🏗️ Architecture Notes
-- **utils/ is the single source of truth** for all reusable functionality
-- **All modules import from utils/** rather than implementing their own
+- **[PROJECT_NAME]/utils/ is the single source of truth** for all reusable functionality
+- **All modules import from [PROJECT_NAME].utils** rather than implementing their own
 - **No duplicate implementations** - follow DRY principles religiously
 - **Performance optimized** - Use sampling patterns for large datasets
+- **Import pattern**: `from [PROJECT_NAME].utils import utility_function`
 
 ## Development Commands
 
@@ -73,7 +79,8 @@ If the human seems to be:
 - [REPLACE: Add project-specific anti-patterns you've learned to avoid]
 - Multiple implementations of the same calculation
 - O(n²) algorithms without sampling for large datasets
-- Module-specific utilities instead of utils/ consolidation
+- Module-specific utilities instead of [PROJECT_NAME]/utils/ consolidation
+- Importing from test files or docs directories
 
 ## Dependencies
 [REPLACE: List key dependencies and any special requirements]
