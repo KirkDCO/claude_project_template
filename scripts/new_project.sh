@@ -11,7 +11,9 @@ fi
 PROJECT_NAME=$1
 PROJECT_TYPE=${2:-python}
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="$(dirname "$SCRIPT_DIR")/templates"
+TEMPLATE_ROOT="$(dirname "$SCRIPT_DIR")"
+TEMPLATE_DIR="$TEMPLATE_ROOT/templates"
+GUIDELINES_DIR="$TEMPLATE_ROOT/guidelines"
 
 echo "🚀 Setting up new project: $PROJECT_NAME"
 echo "📁 Project type: $PROJECT_TYPE"
@@ -23,9 +25,9 @@ cd "$PROJECT_NAME"
 
 # Copy universal guidelines
 echo "📋 Copying coding guidelines..."
-cp "$SCRIPT_DIR/../CODING_GUIDELINES.md" .
-cp "$SCRIPT_DIR/../DEVELOPER_GUIDELINES.md" .
-cp "$SCRIPT_DIR/../SESSION_STARTUP.md" .
+cp "$GUIDELINES_DIR/CODING_GUIDELINES.md" .
+cp "$GUIDELINES_DIR/DEVELOPER_GUIDELINES.md" .
+cp "$GUIDELINES_DIR/SESSION_STARTUP.md" .
 
 # Create CLAUDE.md from template
 echo "📝 Creating CLAUDE.md..."

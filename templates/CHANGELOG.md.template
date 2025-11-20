@@ -1,0 +1,46 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+- Initial project setup with coding guidelines
+- Utils-first architecture structure
+- DRY compliance audit script
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+---
+
+## Template Instructions
+
+When updating this changelog:
+1. Add entries under [Unreleased] as you work
+2. Move unreleased items to a new version when releasing
+3. Use semantic versioning (MAJOR.MINOR.PATCH)
+4. Group changes by type: Added, Changed, Deprecated, Removed, Fixed, Security
+5. Be specific and link to issues/PRs when applicable
+
+Example release:
+```
+## [1.0.0] - 2024-10-14
+
+### Added
+- User authentication system with JWT tokens (#123)
+- Database migration scripts (#124)
+
+### Fixed
+- Bug in utils/metrics.py calculation (#125)
+```
