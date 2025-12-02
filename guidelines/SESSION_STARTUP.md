@@ -12,6 +12,11 @@
 - ✅ Coordinate system standardization
 - ✅ Configuration propagation verification
 - ✅ Performance-aware algorithms with sampling
+- ✅ **Scientific rigor over flattery** (see DEVELOPER_GUIDELINES.md §🔬)
+  - Skepticism before agreement
+  - Identify failure modes before benefits
+  - Demand empirical validation for complex strategies
+  - Reserve praise for ideas that survive scrutiny
 
 **Also run if available:** `./scripts/dry_audit.sh`
 
